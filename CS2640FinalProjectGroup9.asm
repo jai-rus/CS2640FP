@@ -17,6 +17,7 @@ exitMsg: .asciiz "\nThanks for playing! Goodbye!"
 newLine: .asciiz "\n"
 verticalLine: .asciiz " | "
 horizontalLine: .asciiz "-----------"
+promptIndex: .asciiz "If you would like to see the index please input (3)"
 
 #Maybe save $t0 as the main input variable
 
@@ -50,21 +51,43 @@ startGame:
 	printString(startMenu)
 	#Index of the position on the board
 	li $t1, 0
-	j printInitialBoard
+	j printIndexBoard
 	
-printInitialBoard:
+printIndexBoard:
+	#Print current number
 	printInt($t1)
 	
-	li $t3, 2
-	beq $t1, $t3, printHorizontal
+	#Determine if we're at the end of a row (2, 5, 8)
 	add $t1, $t1, 1
-	printString(verticalLine)
-	j printInitialBoard
+	rem $t2, $t1, 3
+	bnez $t2, printDivide #if not 0, print " | "
 	
+	#Print newline and horizontal after each row
+	printString(newLine)
+	
+	#Check if index is 9, if it is return to menu
+	li $t3, 9
+	bge $t1, $t3, menu
+	
+	printString(horizontalLine)
+	
+	printString(newLine)
+	
+	j printIndexBoard
+
+#Print horizontal separator
 printHorizontal:
 	printString(newLine)
 	printString(horizontalLine)
-	
+
+#Print divisor between numbers
+printDivide:
+	li $v0, 4
+	la $a0, verticalLine
+	syscall
+	j printIndexBoard
+
+#Exit Program	
 exit:
 	printString(exitMsg)
 	li $v0, 10

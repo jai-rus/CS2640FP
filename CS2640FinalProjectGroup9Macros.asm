@@ -12,6 +12,7 @@
 	move $t0, $v0
 .end_macro
 
+#Prints out an integer
 .macro printInt(%address)
 	li $v0, 1
 	move $a0, %address
