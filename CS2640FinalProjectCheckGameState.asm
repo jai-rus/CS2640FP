@@ -91,6 +91,7 @@ setOwin:
     	li $v0, 2			#O wins
     	jr $ra
 
+#Reset the board to original
 .globl resetBoard
 resetBoard:
 	la $t0, board			#load board
