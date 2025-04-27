@@ -74,8 +74,8 @@ L_draw:
     printString(drawStr)
 
 L_done:
-    jal resetBoard
-    j 	menu
+    jal resetBoard	#Reset the board
+    j 	menu		#Open back menu screen
 
 # — real updateBoard: write 'X' or 'O' into board[index] —
 .globl updateBoard
