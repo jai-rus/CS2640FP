@@ -3,6 +3,7 @@
 #Final Project Group 9
 .include "CS2640FinalProjectGroup9Macros.asm"
 
+
 #Board Size is 3x3
 .eqv BOARD_SIZE 9
 
@@ -22,10 +23,15 @@ promptIndex: .asciiz "If you would like to see the index please input (3)"
 #Maybe save $t0 as the main input variable
 
 .text
+.globl main
+
 #Print Welcome Message then jump to main menu
 main:
 	printString(welcomeMsg)
 	j menu
+
+# include CS2640FinalProjectGameLoop .asm file
+.include "CS2640FinalProjectGameLoop.asm"
 
 #Prints menu then waits for input	
 menu:
@@ -52,6 +58,8 @@ startGame:
 	#Index of the position on the board
 	li $t1, 0
 	j printIndexBoard
+
+
 	
 printIndexBoard:
 	#Print current number
@@ -67,7 +75,7 @@ printIndexBoard:
 	
 	#Check if index is 9, if it is return to menu
 	li $t3, 9
-	bge $t1, $t3, menu
+	bge $t1, $t3, PI_startGame
 	
 	printString(horizontalLine)
 	
@@ -86,6 +94,11 @@ printDivide:
 	la $a0, verticalLine
 	syscall
 	j printIndexBoard
+
+PI_startGame:
+    jal  playGameLoop
+    j    menu
+
 
 #Exit Program	
 exit:
