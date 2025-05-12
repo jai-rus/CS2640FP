@@ -1,4 +1,4 @@
-#Tic-Tac-Toe in MIPS Assembly
+##Tic-Tac-Toe in MIPS Assembly
 
 **CS2640 Final Project – Group 9**  
 **Contributors:** An Nguyen, Jairus Legion, Valeria Urzua, Viet Tran
