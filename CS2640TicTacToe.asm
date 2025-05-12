@@ -14,13 +14,14 @@ board: .space BOARD_SIZE
 welcomeMsg: .asciiz "Welcome to our Tic-Tac-Toe game! To get started, please see the options below!"
 mainMenu: .asciiz "\n---------\nTo play a game please enter (1)\nTo exit please enter (2)\n---------\n"
 echo: .asciiz "You chose: "
-invalidInput: .asciiz "Invalid choice. Please try again\n"
+invalidInput: .asciiz "\nInvalid choice. Please try again\n"
 startMenu: .asciiz "\nNow starting a game.\n"
 exitMsg: .asciiz "\nThanks for playing! Goodbye!"
 newLine: .asciiz "\n"
 verticalLine: .asciiz " | "
 horizontalLine: .asciiz "-----------"
 promptIndex: .asciiz "If you would like to see the index please input (3)"
+waitEndGame: .asciiz "Press any key to continue\n"
 
 #Ingame Msgs
 promptX:    .asciiz "\nPlayer X, enter index (0-8): "
@@ -149,6 +150,15 @@ draw:
 gameDone:
     #Print final board state
     jal printCurrentBoard
+    
+    #Wait for user input before returning to main menu
+    la $a0, waitEndGame
+    li $v0, 4
+    syscall
+    
+    #Wait for key press
+    li $v0, 12
+    syscall
     
     #Display return to menu message
     printString(playAgainStr)
