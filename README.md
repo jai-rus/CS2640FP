@@ -3,6 +3,9 @@
 **CS2640 Final Project – Group 9**  
 **Contributors:** An Nguyen, Jairus Legion, Valeria Urzua, Viet Tran
 
+## Project Overview
+This project implements a simple, text-based Tic-Tac-Toe game written entirely in MIPS Assembly language as a final assignment for CS2640. The program allows two players to take turns entering moves on a 3x3 board, checks for win conditions, and provides a basic menu interface.
+
 ## Requirements
 - MARS 4.5
 
