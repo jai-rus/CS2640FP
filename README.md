@@ -4,7 +4,7 @@
 **Contributors:** An Nguyen, Jairus Legion, Valeria Urzua, Viet Tran
 
 ## Requirements
-- [MARS 4.5](http://courses.missouristate.edu/kenvollmar/mars/download.htm)
+- MARS 4.5
 
 ## Files
 - `CS2640FinalProjectGroup9.asm` – Main game logic  
